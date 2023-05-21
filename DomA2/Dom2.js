@@ -1,5 +1,6 @@
 var form = document.getElementById("addForm");
 var itemList = document.getElementById("items");
+var filter = document.getElementById("filter");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -7,6 +8,11 @@ form.addEventListener("submit", (e) => {
   var li = document.createElement("li");
   li.className = "list-group-item";
   li.appendChild(document.createTextNode(newitem));
+
+  // creating description
+
+  var descItem = document.getElementById("itemDescr").value;
+  li.appendChild(document.createTextNode(` ----> ${descItem}`));
 
   /// creating button
   var deletebtn = document.createElement("button");
@@ -31,4 +37,22 @@ itemList.addEventListener("click", (e) => {
       itemList.removeChild(li);
     }
   }
+});
+
+filter.addEventListener("keyup", (e) => {
+  var text = e.target.value.toLowerCase();
+  var items = document.getElementsByTagName("li");
+
+  Array.from(items).forEach((ele) => {
+    var itemName = ele.firstChild.textContent;
+    var descChecj = ele.firstChild.nextSibling.textContent;
+
+    if (itemName.toLowerCase().indexOf(text) !== -1) {
+      ele.style.display = "block";
+    } else if (descChecj.toLowerCase().indexOf(text) !== -1) {
+      ele.style.display = "block";
+    } else {
+      ele.style.display = "none";
+    }
+  });
 });
