@@ -12,7 +12,7 @@ headTitle.style.background = "red";
 headTitle.style.border = "solid 5px black";
 
 var mainHeader = document.getElementById("main-header");
-mainHeader.style.borderBottom = "solid 5px blue";
+mainHeader.style.borderBottom = "solid 5px blue"; 
 */
 
 /* // GetElementByClassName
@@ -24,19 +24,18 @@ addItem[0].style.color = "green";
 
 var listItem = document.getElementsByClassName("list-group-item");
 // var listItem1 = document.getElementById("items");
-console.log(listItem);
+// console.log(listItem);
 // console.log(listItem1);
 
-listItem[2].style.backgroundColor = "green";
+// listItem[2].style.backgroundColor = "green";
 listItem[0].style.fontWeight = "bold";
 listItem[1].style.fontWeight = "bold";
 listItem[3].style.fontWeight = "bold";
-listItem[3].style.backgroundColor = "green";
+// listItem[3].style.backgroundColor = "green";
 
-// for (let i = 0; i < listItem.length; i++) {
-//   listItem[i].style.backgroundColor = "red";
-// }
-*/
+for (let i = 0; i < listItem.length; i++) {
+  listItem[i].style.backgroundColor = "red";
+} */
 
 /*
 var listFive = document.getElementsByClassName("list-5");
@@ -104,9 +103,9 @@ for (let i = 0; i < odd.length; i++) {
 }
 */
 
-////////////////// Traversing the DOM /////////////////////
+/* ///////////////// Traversing the DOM ///////////////
 
-// var itemList = document.querySelector("#items");
+var itemList = document.querySelector("#items");
 
 // ParentNode
 // console.log(itemList.parentNode);
@@ -151,7 +150,7 @@ for (let i = 0; i < odd.length; i++) {
 // PreviousElementSibling
 // console.log(itemList.previousElementSibling);
 
-//////////// CreateElement ///////////////////////////
+//////////////// CreateElement ///////////////////////////
 
 var newDiv = document.createElement("div");
 console.log(newDiv);

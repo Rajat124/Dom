@@ -56,3 +56,19 @@ filter.addEventListener("keyup", (e) => {
     }
   });
 });
+
+/* //////
+var items = document.getElementsByTagName("li");
+console.log(items);
+console.log(items[0].firstChild);
+
+var itemName = items[0].firstChild.textContent;
+console.log(itemName);
+
+var items = document.querySelector("#items");
+console.log(items);
+console.log(items.childNodes);
+console.log(items.firstChild);
+console.log(items.lastChild);
+
+*/
