@@ -1,7 +1,4 @@
 const myform = document.getElementById("myform");
-const name1 = document.getElementById("nameid");
-const email = document.getElementById("emailid");
-const phone = document.getElementById("phoneid");
 const btn1 = document.getElementById("btn");
 const itemlist = document.getElementById("item");
 
@@ -17,21 +14,38 @@ btn1.addEventListener("mouseout", (e) => {
 
 myform.addEventListener("submit", (e) => {
   e.preventDefault();
-  if (name1.value == "" || email.value == "" || phone.value == "") {
+  const name1 = document.getElementById("nameid").value;
+  const uemail = document.getElementById("emailid").value;
+  const phone = document.getElementById("phoneid").value;
+  if (name1 == "" || uemail == "" || phone == "") {
     alert("Please Enter All");
   } else {
-    var newli = document.createElement("li");
-    newli.appendChild(document.createTextNode(`${name1.value}`));
-    newli.appendChild(document.createTextNode(`- ${email.value}`));
-    newli.appendChild(document.createTextNode(`- ${phone.value}`));
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(name1));
+    li.appendChild(document.createTextNode(` - ${uemail}`));
+    li.appendChild(document.createTextNode(` - ${phone}`));
 
-    itemlist.appendChild(newli);
+    var delbtn = document.createElement("button");
+    delbtn.className = "btn btn-danger btn-sm float-right delete";
+    delbtn.appendChild(document.createTextNode("Delete"));
+    li.appendChild(delbtn);
+    itemlist.appendChild(li);
 
     let obj = {
-      name: `${name1.value}`,
-      email: `${email.value}`,
-      phone: `${phone.value}`,
+      name: name1,
+      email: uemail,
+      phone: phone,
     };
-    localStorage.setItem(`${email.value}`, JSON.stringify(obj));
+    localStorage.setItem(uemail, JSON.stringify(obj));
   }
+
+  itemlist.addEventListener("click", (e) => {
+    if (e.target.classList.contains("delete")) {
+      if (confirm("Are U Sure?")) {
+        var li = e.target.parentElement;
+        localStorage.removeItem(uemail);
+        itemlist.removeChild(li);
+      }
+    }
+  });
 });
