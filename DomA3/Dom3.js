@@ -21,14 +21,24 @@ myform.addEventListener("submit", (e) => {
     alert("Please Enter All");
   } else {
     var li = document.createElement("li");
-    li.appendChild(document.createTextNode(name1));
-    li.appendChild(document.createTextNode(` - ${uemail}`));
-    li.appendChild(document.createTextNode(` - ${phone}`));
+    li.appendChild(
+      document.createTextNode(name1 + " | " + uemail + " | " + phone)
+    );
+
+    /// delete button
 
     var delbtn = document.createElement("button");
     delbtn.className = "btn btn-danger btn-sm float-right delete";
     delbtn.appendChild(document.createTextNode("Delete"));
     li.appendChild(delbtn);
+
+    /// edit button
+
+    var editbtn = document.createElement("button");
+    editbtn.className = "btn btn-dark btn-sm float-right edit";
+    editbtn.appendChild(document.createTextNode("Edit"));
+    li.appendChild(editbtn);
+
     itemlist.appendChild(li);
 
     let obj = {
@@ -38,14 +48,31 @@ myform.addEventListener("submit", (e) => {
     };
     localStorage.setItem(uemail, JSON.stringify(obj));
   }
+});
 
-  itemlist.addEventListener("click", (e) => {
-    if (e.target.classList.contains("delete")) {
-      if (confirm("Are U Sure?")) {
-        var li = e.target.parentElement;
-        localStorage.removeItem(uemail);
-        itemlist.removeChild(li);
-      }
+itemlist.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete")) {
+    if (confirm("Are U Sure?")) {
+      var li = e.target.parentElement;
+      var details = li.childNodes[0].textContent.split(" | ");
+      localStorage.removeItem(details[1]);
+      itemlist.removeChild(li);
     }
-  });
+  }
+  e.stopPropagation();
+});
+
+itemlist.addEventListener("click", (e) => {
+  if (e.target.classList.contains("edit")) {
+    var li = e.target.parentElement;
+    var namebox = document.getElementById("nameid");
+    var emailbox = document.getElementById("emailid");
+    var phonebox = document.getElementById("phoneid");
+    var details = li.childNodes[0].textContent.split(" | ");
+    localStorage.removeItem(details[1]);
+    namebox.value = details[0];
+    emailbox.value = details[1];
+    phonebox.value = details[2];
+    itemlist.removeChild(li);
+  }
 });
