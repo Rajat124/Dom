@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Site</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</head>
+<body class="bg-danger">
+<div class="container"> 
+<form class="form-control bg-danger text-white" id="myform">
+    <input type="number" class="form-control" id="amountid" placeholder="Expense Amount">
+    <input type="text" class="form-control" id="decrid" placeholder="Description">
+    <select id="categoryid" class="form-control">
+        <option value="Movies">Movies</option>
+        <option value="Games">Games</option>
+        <option value="Clothes">Clothes</option>
+        <option value="Consoles">Consoles</option>
+      </select>
+    <button id="btn" class="form-control border-10 border-dark">Add Expense</button>
+</form>
+<h3 class="font-italic d-flex justify-content-center text-light">Item List</h3><hr>
+<ul id="item" class="list-group">
+</ul>
+</div>
+</body>
+<script src="script.js"></script>
+</html>
